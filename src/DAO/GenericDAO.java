@@ -20,11 +20,11 @@ import java.util.logging.Logger;
 public abstract class GenericDAO{
 
     String driver = "com.mysql.jdbc.Driver"; //Classe do driver JDBC
-    public final String banco = "sisci"; //Nome do Banco criado
-    String host = "localhost"; //Maquina onde está o banco
+    public final String banco = "sisci"; //Nome do banco de dados
+    String host = "localhost"; //servidor do banco de dados
     String str_conn = "jdbc:mysql://" + host + ":3306/" + banco; //URL de conexão
-    String usuario = "root"; //Usuário do banco
-    String senha = "m1fx52kv"; //Senha de conexão
+    String usuario = "root"; //usuário do banco de dados
+    String senha = "1234"; //senha do banco de dados
     
     
     public static DateFormat defaultDateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -41,7 +41,7 @@ public abstract class GenericDAO{
 
         try {
             Class.forName("com.mysql.jdbc.Driver"); //Class.forName(DRIVER);//jdbc:mysql://localhost:3306/sisci?zeroDateTimeBehavior=convertToNull
-            Connection cx = DriverManager.getConnection("jdbc:mysql://:3306/sisci", "root", "m1fx52kv");//Connection cx = DriverManager.getConnection(str_conn, usuario, senha);//Connection cx = DriverManager.getConnection(URL, LOGIN, SENHA);
+            Connection cx = DriverManager.getConnection("jdbc:mysql://:3306/sisci", "root", "1234");//Connection cx = DriverManager.getConnection(str_conn, usuario, senha);//Connection cx = DriverManager.getConnection(URL, LOGIN, SENHA);
             return cx;
         } catch (Exception ex) {
             Logger.getLogger(GenericDAO.class.getName()).log(Level.SEVERE, null, ex);
