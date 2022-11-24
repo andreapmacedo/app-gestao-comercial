@@ -5,9 +5,10 @@
  */
 package GNF;
 
-import DAO.EstadosDAO;
-import Entidades.Estados;
-import Frames.Form_GNF;
+import dao.EstateDAO;
+import entities.Estate;
+import frames.Form_GNF;
+
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,8 +26,8 @@ import javax.swing.JTextField;
  */
 public class GNF_Estados {
 
-    private final EstadosDAO itemDAO = new EstadosDAO();
-    Estados estado = new Estados();
+    private final EstateDAO itemDAO = new EstateDAO();
+    Estate estado = new Estate();
     public String columnNames[] = {"ID", "NOME"};
     public boolean statusCmd = false;
     public String statusErr = null;
@@ -37,7 +38,7 @@ public class GNF_Estados {
 
     public List listItens() throws SQLException {
 
-        List<Estados> list = new ArrayList(itemDAO.get_All_Entity_OrderByItemName());
+        List<Estate> list = new ArrayList(itemDAO.get_All_Entity_OrderByItemName());
 
         return list;
 
@@ -55,8 +56,8 @@ public class GNF_Estados {
 
         try {
             //int y = 0;
-            Vector<Estados> objeto = new Vector(itemDAO.get_All_Entity_SQLdefault());
-            for (Estados i : objeto) {
+            Vector<Estate> objeto = new Vector(itemDAO.get_All_Entity_SQLdefault());
+            for (Estate i : objeto) {
                 y = i.getIdEstado();
             }
 
@@ -81,8 +82,8 @@ public class GNF_Estados {
 
         try {
 
-            Vector<Estados> list = new Vector(itemDAO.get_All_Entity_OrderByItemName());
-            for (Estados i : list) {
+            Vector<Estate> list = new Vector(itemDAO.get_All_Entity_OrderByItemName());
+            for (Estate i : list) {
                 String x = i.getNomeEstado();
                 if (x.equals(itemText.toUpperCase())) {
                     //JOptionPane.showMessageDialog(null, "Esse campo já existe!");
@@ -117,8 +118,8 @@ public class GNF_Estados {
         // Verifica se o registro já existe.                
         try {
 
-            List<Estados> list = new LinkedList(itemDAO.get_All_Entity_SQLdefault());
-            for (Estados i : list) {
+            List<Estate> list = new LinkedList(itemDAO.get_All_Entity_SQLdefault());
+            for (Estate i : list) {
                 String x = i.getNomeEstado();
                 if (x.equals(itemText.toUpperCase())) {
                     //JOptionPane.showMessageDialog(null, "Esse campo já existe!");
@@ -144,12 +145,12 @@ public class GNF_Estados {
 
     }
 
-    public static Object[][] preencherTabela(List<Estados> lista) {
+    public static Object[][] preencherTabela(List<Estate> lista) {
 
         Object[][] resposta = new Object[lista.size()][2];
 
         for (int i = 0; i < resposta.length; i++) {
-            Estados orc = lista.get(i);
+            Estate orc = lista.get(i);
             // resposta[i][2] = orc.setIdCidade();
             resposta[i][0] = orc.getIdEstado();
             resposta[i][1] = orc.getNomeEstado();
